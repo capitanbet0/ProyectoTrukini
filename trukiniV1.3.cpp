@@ -3,7 +3,7 @@
 #include <time.h> //nuevo
 #include <string.h>
 
-// --- CONSTANTES Y ENUMS ---
+// === CONSTANTES Y ENUMS ===
 #define NUM_CARTAS 40
 #define CARTAS_POR_JUGADOR 3
 #define PUNTOS_FINALES 15 // Puntos para ganar la partida, si se desea se puede cambiar por 30
@@ -24,7 +24,7 @@ typedef enum{
 
 EstadoTruco estadoTruco = TRUCO_NINGUNO;
 
-// --- ESTRUCTURAS ---
+// === ESTRUCTURAS ===
 
 // Estructura de la Carta
 typedef struct {
@@ -42,7 +42,7 @@ typedef struct {
     int puntos_partida;
 } Jugador;
 
-// --- DECLARACIONES DE FUNCIONES ---
+// ==- DECLARACIONES DE FUNCIONES -==
 void inicializar_mazo(Carta mazo[]);
 void asignar_valores_carta(Carta *c);
 void barajar(Carta mazo[], int n);
@@ -93,7 +93,7 @@ void imprimir_puntos_totales(Jugador *j1, Jugador *j2) {
     printf("+----------------------+----------------------+\n");
 }
 
-// --- LOGICA DE CARTAS ---
+// ==- LOGICA DE CARTAS -==
 
 // Asigna los valores de Truco y Envido a una carta
 void asignar_valores_carta(Carta *c) {
@@ -140,7 +140,7 @@ void inicializar_mazo(Carta mazo[]) {
     }
 }
 
-// --- LOGICA DE REPARTO Y MEZCLA ---
+// ==- LOGICA DE REPARTO Y MEZCLA -==
 
 // Algoritmo de Fisher-Yates para barajar, aqui hago un cambio para que solo baraje y no siembre. Porque puede producir malas mezclas
 void barajar(Carta mazo[], int n) {
@@ -161,7 +161,7 @@ void repartir(Carta mazo[], Jugador *j1, Jugador *j2) {
     }
 }
 
-// --- LOGICA DE JUEGO (ENVIDO) ---
+//  LOGICA DE JUEGO (ENVIDO) 
 
 // Calcula el puntaje de Envido de una mano
 int obtener_valor_envido_mano(Jugador *j) {
@@ -208,7 +208,7 @@ int obtener_valor_envido_mano(Jugador *j) {
     return max_pareja;
 }
 
-// --- LOGICA DE JUEGO (TRUCO) ---
+// ==- LOGICA DE JUEGO (TRUCO) -==
 
 // Determina el ganador de una baza (una carta contra otra)
 // Devuelve 1 si gana j1, 2 si gana j2, 0 si es empate.
@@ -469,13 +469,13 @@ int main() {
         int puntos_truco_ronda = 1; // La mano vale 1 punto (o mas si se canta Truco)
         int puntos_envido_ronda = 2; // Envido vale 2 si se acepta
         
-        // --- 1. MOSTRAR MANO ---
+        // ==- 1. MOSTRAR MANO -==
         imprimir_mano(&jugador1);
         printf("\n");
         imprimir_mano(&jugador2);
         printf("\n");
 
-        // --- 2. FASE DE APUESTAS (Envido y Truco) ---
+        // === 2. FASE DE APUESTAS (Envido y Truco) ===
 
         // Camtar Envido
         int opcion;
@@ -621,7 +621,7 @@ int main() {
         	getchar();
         }
         
-        //------ OPCION DE CANTAR TRUCO -------
+        //============= OPCION DE CANTAR TRUCO =============
         int valor_truco = cantar_truco(&jugador1, &jugador2);
         
         if(valor_truco == -1){
@@ -638,7 +638,7 @@ int main() {
         // --- 3. FASE DE JUEGO DE CARTAS ---
         jugar_mano(&jugador1, &jugador2, &puntos_truco_ronda, &puntos_envido_ronda);
         
-        // --- 4. MOSTRAR PUNTUACIÓN ---
+        // -_-_- 4. MOSTRAR PUNTUACIÓN -_-_-
         imprimir_puntos_totales(&jugador1, &jugador2);
         
         printf("\nPresiona ENTER para la siguiente ronda...\n");
@@ -648,7 +648,7 @@ int main() {
       
     }
     
-    // --- 5. RESULTADO FINAL ---
+    // ==- 5. RESULTADO FINAL -==
     printf("\n\n###########################################\n");
     if (jugador1.puntos_partida >= PUNTOS_FINALES) {
         printf("GANADOR DE LA PARTIDA: %s !!!\n", jugador1.nombre);
@@ -659,6 +659,7 @@ int main() {
 
     return 0;
 }
+
 
 
 
