@@ -24,7 +24,7 @@ typedef enum{
 
 EstadoTruco estadoTruco = TRUCO_NINGUNO;
 
-// === ESTRUCTURAS ===
+// ESTRUCTURAS
 
 // Estructura de la Carta
 typedef struct {
@@ -659,6 +659,7 @@ int main() {
 
     return 0;
 }
+
 
 
 
